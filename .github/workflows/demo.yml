@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Trigger Jenkins
         run: |
-          curl -X POST "http://localhost:8080/>/job/<Wdio>/build" \
+          curl -X POST "http://localhost:8080>/job/<Wdio>/build" \
           --user "<Sudheer>:<118d3d075291b6555b557dd6d2eed17585>"
