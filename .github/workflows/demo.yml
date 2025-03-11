@@ -1,0 +1,16 @@
+name: Trigger Jenkins Job
+
+on:
+  push:
+    branches:
+      - master # Specify the branch to trigger the Jenkins job.
+
+jobs:
+  trigger-jenkins:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Trigger Jenkins
+        run: |
+          curl -X POST "http://<http://localhost:8080/>/job/<Wdio>/build" \
+          --user "<Sudheer>:<118d3d075291b6555b557dd6d2eed17585>"
