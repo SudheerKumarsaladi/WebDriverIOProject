@@ -1,5 +1,5 @@
 
-import allure from 'allure-commandline';
+//import allure from 'allure-commandline';
 export const config = {
     //
     // ====================
@@ -52,7 +52,7 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'MicrosoftEdge'
     }],
 
     //
@@ -278,7 +278,7 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function() {
+    /*onComplete: function() {
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
@@ -298,7 +298,7 @@ export const config = {
             })
         })
     },
-
+*/
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
