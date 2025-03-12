@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Run WDIO Tests
 
 on:
   push:
@@ -9,18 +9,28 @@ on:
       - master
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
+  wdio-tests:
+    runs-on: ubuntu-latest  # You can change the OS to windows-latest or macos-latest depending on your requirement
 
+    steps:
+    # Step 1: Checkout code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '22'
-    
+        node-version: '22'  # Adjust Node.js version as needed
+
+    # Step 3: Install dependencies
     - name: Install dependencies
-      run: npm install
+      run: |
+        npm install  # Or use 'yarn install' if you use Yarn
+
+    # Step 4: Set up WebDriverIO configuration (optional, if you need a custom config)
+    # Add any additional setup, such as configuring WDIO or other tools if required.
     
-    - name: Run tests
-      run: npm wdio
+    # Step 5: Run the WDIO tests
+    - name: Run WDIO Tests
+      run: npx wdio run wdio.conf.js  # Replace with your WDIO config file if it's named differently
