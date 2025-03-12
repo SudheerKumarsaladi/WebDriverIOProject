@@ -39,3 +39,7 @@ jobs:
     # Step 6: Run WebDriverIO tests with npx
     - name: Run WDIO Tests
       run: npx wdio run wdio.conf.js  # Run the tests using the locally installed wdio binary
+      
+    # Step 7: genrate the allure reports.
+    - name: allure reports
+      run: npx allure generate allure-results --clean && allure open 
