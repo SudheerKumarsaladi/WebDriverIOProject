@@ -1,4 +1,4 @@
-name: Run WDIO Tests
+name: Run WDIO Test
 
 on:
   push:
