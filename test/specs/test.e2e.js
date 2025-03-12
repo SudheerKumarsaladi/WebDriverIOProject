@@ -10,7 +10,7 @@ describe('My Login application', () => {
         await LoginPage.open()
      })
         
-    it('should login with valid credentials', async () => {
+    it('should login with valid-credentials', async () => {
        
         allureReporter.addFeature("launch th url successfully")
         allureReporter.addSeverity('critical')
