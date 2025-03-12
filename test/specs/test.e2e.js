@@ -6,7 +6,7 @@ import allureReporter from '@wdio/allure-reporter'
 describe('My Login application', () => {
 
      before(async()=>{
-        //Open the URL of the applicationin chrome.
+       
         await LoginPage.open()
      })
         
