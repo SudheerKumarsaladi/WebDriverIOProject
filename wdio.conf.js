@@ -1,5 +1,5 @@
 
-//import allure from 'allure-commandline';
+import allure from 'allure-commandline';
 export const config = {
     //
     // ====================
@@ -23,7 +23,7 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/**/Selectors.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -52,7 +52,7 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'MicrosoftEdge'
+        browserName: 'chrome'
     }],
 
     //
@@ -86,7 +86,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+       baseUrl: 'https://www.saucedemo.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -232,11 +232,13 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-     afterTest:async function(test,context,{error}) {
+     afterTest:async function(test,context,error) {
         if (error) {
             await browser.takeScreenshot();
         }
      },
+
+
 
     /**
      * Hook that gets executed after the suite has ended
@@ -278,7 +280,7 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    /*onComplete: function() {
+    onComplete: function() {
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
@@ -298,7 +300,7 @@ export const config = {
             })
         })
     },
-*/
+
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session

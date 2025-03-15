@@ -1,28 +1,17 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
-import SecurePage from '../pageobjects/secure.page.js'
-import allureReporter from '@wdio/allure-reporter'
+import { browser } from '@wdio/globals'
 
-describe('My Login application', () => {
+describe('Amazon HomePage.', () => {
+  
+    it('Open the URL and validate the url', async () => {
+        await browser.url('/');
 
-     before(async()=>{
-       
-        await LoginPage.open()
-     })
-        
-    it('should login with valid-credentials', async () => {
-       
-        allureReporter.addFeature("launch th url successfully")
-        allureReporter.addSeverity('critical')
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
-        allureReporter.addFeature("logged in successfully")
-        allureReporter.addSeverity('critical')
+        await browser.$('#user-name').setValue('standard_user');
+        await browser.$('#password').setValue('secret_sauce');
+        await browser.$('#login-button').click();
 
+        await expect($('.app_logo')).toHaveText('Swag Labs');
 
-        await expect(SecurePage.flashAlert).toBeExisting()
-        await expect(SecurePage.flashAlert).toHaveText(
-        await expect.stringContaining('You logged into a secure area!'))
-        await expect(SecurePage.flashAlert).toMatchElementSnapshot('flashAlert')
     })
 })
 
