@@ -54,9 +54,11 @@ export const config = {
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions':{
-            args: ['--headlesss',
-                   '--disable-gpu',
-                   '--disable-dev-shn-usage'
+            args: [ '--headless',               // Headless mode
+                    '--disable-gpu',            // Disable GPU (required for headless mode)
+                    '--disable-dev-shm-usage',  // Ensure it works on CI
+                    '--no-sandbox',             // For Chrome to run in CI
+                    `--user-data-dir=${path.join(os.tmpdir(), 'chrome-profile-' + Date.now())}` // Unique user data dir
                   ]
         },
     }],
