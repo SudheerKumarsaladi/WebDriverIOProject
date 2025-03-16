@@ -1,38 +1,26 @@
-name: WebDriverIO Tests
-
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-
+name: CI
+on: [push, pull_request]
 jobs:
-  test:
-    runs-on: ubuntu-latest  # Use Ubuntu runner
-
+  build:
+    runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v2
+        - name: ⬇️ Checkout Code
+          uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '22'  # Set the Node.js version required for your project
+        - name: 🐢 Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '22'
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: |
-          npm install
+        - name: 🏗️ Install Dependencies
+          run: npm install
 
-      # Step 5: Install ChromeDriver
-      - name: Install ChromeDriver
-        run: |
-          sudo apt-get install -y chromium-chromedriver
-          
-      # Step 6: Run WebDriverIO tests
-      - name: Run WebDriverIO tests
-        run: npm run wdio
+        - name: 🧪 Test
+          run: npm run wdio
+
+        - name: 📦 Upload Logs
+          uses: actions/upload-artifact@v4
+     
+          with:
+            name: allure Reports
+            path: ./allure-report
