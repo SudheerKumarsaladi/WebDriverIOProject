@@ -1,4 +1,5 @@
 
+const path = require('path');  
 import allure from 'allure-commandline';
 export const config = {
     //
