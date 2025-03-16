@@ -27,3 +27,6 @@ jobs:
           with:
             name: allure Reports
             path: allure-report/
+
+        - name: openReports
+          run: npm run allure-reports
