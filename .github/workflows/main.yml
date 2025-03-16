@@ -18,11 +18,16 @@ jobs:
         - name: Fix permissions
           run: chmod +x ./node_modules/.bin/wdio
 
+          # Step 4: Install allure-commandline
+        - name: Install allure-commandline
+          run: npm install allure-commandline --save-dev
+
+          # Step 5: Fix permissions for allure binary
+        - name: Fix permissions for allure binary
+          run: chmod +x ./node_modules/.bin/allure
+
         - name: 🧪 Test
           run: npm run wdio
-        
-        - name: Fix allure permissions
-          run: chmod +x ./node_modules/allure-commandline/dist/bin/allure
 
         - name: Generate Allure report
           run: npx allure generate allure-results --clean
