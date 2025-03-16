@@ -15,6 +15,9 @@ jobs:
         - name: 🏗️ Install Dependencies
           run: npm install
 
+        - name: Fix permissions for wdio
+          run: chmod +x node_modules/.bin/wdio
+
         - name: 🧪 Test
           run: npm run wdio
 
