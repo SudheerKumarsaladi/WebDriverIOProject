@@ -14,12 +14,12 @@ jobs:
 
         - name: 🏗️ Install Dependencies
           run: npm install
+       
+        - name: Fix permissions
+          run: chmod +x ./node_modules/.bin/wdio
 
         - name: 🧪 Test
           run: npm run wdio
-
-        - name: Fix permissions
-          run: chmod +x ./node_modules/.bin/wdio
 
         - name: 📦 Upload Logs
           uses: actions/upload-artifact@v4
