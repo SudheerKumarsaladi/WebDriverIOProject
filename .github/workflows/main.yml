@@ -19,10 +19,7 @@ jobs:
           run: chmod +x ./node_modules/.bin/wdio
 
         - name: 🧪 Test
-          run: npm run wdio
-
-        - name: open Allure report
-          run: npm run auto-report
+          run: npm run wdios
 
         - name: 📦 Upload Logs
           uses: actions/upload-artifact@v4
