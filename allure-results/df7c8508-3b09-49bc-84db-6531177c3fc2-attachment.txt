@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//input[@class='form-check-input' and @type='checkbox']"
-}

@@ -288,26 +288,43 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    /*onComplete: function() {
-        const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', 'allure-results', '--clean'])
-        return new Promise((resolve, reject) => {
-            const generationTimeout = setTimeout(
-                () => reject(reportError),
-                5000)
+    // onComplete: function() {
+    //     const reportError = new Error('Could not generate Allure report')
+    //     const generation = allure(['generate', 'allure-results', '--clean'])
+    //     return new Promise((resolve, reject) => {
+    //         const generationTimeout = setTimeout(
+    //             () => reject(reportError),
+    //             5000)
 
-            generation.on('exit', function(exitCode) {
-                clearTimeout(generationTimeout)
+    //         generation.on('exit', function(exitCode) {
+    //             clearTimeout(generationTimeout)
 
-                if (exitCode !== 0) {
-                    return reject(reportError)
-                }
+    //             if (exitCode !== 0) {
+    //                 return reject(reportError)
+    //             }
 
-                console.log('Allure report successfully generated')
-                resolve()
-            })
-        })
-    },*/
+    //             console.log('Allure report successfully generated')
+    //             resolve()
+    //         })
+    //     })
+    // },
+
+    onComplete: async function(exitCode) {
+        //const allure = require('allure-commandline');
+        const allureResults = './allure-results'; // Location where Allure test results are stored
+        const allureReport = allure(['generate', allureResults, '--clean']);  // Generate Allure report
+    
+        allureReport.on('exit', function(code) {
+            console.log('Allure report generation finished with code:', code);
+        });
+    
+        if (exitCode === 0) {
+            console.log('All tests passed successfully!');
+        } else {
+            console.log('Some tests failed, exit code:', exitCode);
+        }
+    },
+    
 
     /**
     * Gets executed when a refresh happens.
