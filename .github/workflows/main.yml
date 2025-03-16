@@ -32,4 +32,4 @@ jobs:
           
           with:
             name: allure Reports
-            path: ./allure-report/
+            path: allure-report/
