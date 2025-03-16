@@ -53,10 +53,12 @@ export const config = {
     //
     capabilities: [{
         browserName: 'MicrosoftEdge',
-        'ms:edgeOptions':{
+        'goog:chromeOptions':{
             args: ['--headlesss',
                    '--disable-gpu',
-                   '--disable-dev-shn-usage'
+                   '--disable-dev-shn-usage',
+                   '--user-data-dir=$GITHUB_WORKSPACE/test-data',
+                   '--remote-debugging-port=9222'
                   ]
         },
     }],
