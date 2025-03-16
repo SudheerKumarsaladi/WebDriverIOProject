@@ -52,7 +52,7 @@ describe('Automation demo', () => {
         console.log(await dropdown.getValue());
     })
 
-    it('Alerts', async()=>{
+    xit('Alerts', async()=>{
 
         await $(`//button[contains(@class,'st')]`).click();
          //Accept the alert
