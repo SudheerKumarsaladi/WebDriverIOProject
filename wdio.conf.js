@@ -288,7 +288,7 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function() {
+    /*onComplete: function() {
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
@@ -307,7 +307,7 @@ export const config = {
                 resolve()
             })
         })
-    },
+    },*/
 
     /**
     * Gets executed when a refresh happens.
