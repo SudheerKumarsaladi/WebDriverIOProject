@@ -39,6 +39,9 @@ jobs:
         run: |
           sudo apt-get install -y chromium-chromedriver
           
+      - name: Fix permissions for wdio
+        run: chmod +x node_modules/.bin/wdio
+          
       # Step 6: Run WebDriverIO tests
       - name: Run WebDriverIO tests
         run: |
