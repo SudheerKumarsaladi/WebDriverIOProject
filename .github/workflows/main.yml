@@ -23,10 +23,6 @@ jobs:
 
         - name: 📦 Upload Logs
           uses: actions/upload-artifact@v4
-          
           with:
             name: allure Reports
-            path: allure-report/
-
-        - name: openReports
-          run: npm run allure-reports
+            path: ./allure-report
