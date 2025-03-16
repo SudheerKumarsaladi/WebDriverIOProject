@@ -57,8 +57,6 @@ export const config = {
             args: ['--headlesss',
                    '--disable-gpu',
                    '--disable-dev-shn-usage'
-                  // '--user-data-dir=$GITHUB_WORKSPACE/test-data',
-                   //'--remote-debugging-port=9222'
                   ]
         },
     }],
