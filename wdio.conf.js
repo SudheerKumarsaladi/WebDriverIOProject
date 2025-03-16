@@ -52,18 +52,18 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'MicrosoftEdge',
+        browserName: 'chrome',
         'goog:chromeOptions':{
             args: ['--headlesss',
                    '--disable-gpu',
-                   '--disable-dev-shn-usage',
-                   '--user-data-dir=$GITHUB_WORKSPACE/test-data',
-                   '--remote-debugging-port=9222'
+                   '--disable-dev-shn-usage'
+                  // '--user-data-dir=$GITHUB_WORKSPACE/test-data',
+                   //'--remote-debugging-port=9222'
                   ]
         },
     }],
 
-    //
+    
     // ===================
     // Test Configurations
     // ===================
