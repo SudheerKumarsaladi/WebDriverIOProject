@@ -20,6 +20,9 @@ jobs:
 
         - name: 🧪 Test
           run: npm run wdio
+        
+        - name: Fix allure permissions
+          run: chmod +x ./node_modules/.bin/allure
 
         - name: Generate Allure report
           run: npx allure generate allure-results --clean
