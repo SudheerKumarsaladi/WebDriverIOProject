@@ -22,7 +22,7 @@ jobs:
           run: npm run wdio
 
         - name: Generate Allure report
-          run: npm run allure generate allure-results --clean
+          run: npm run allure-reports
 
         - name: 📦 Upload Logs
           uses: actions/upload-artifact@v4
