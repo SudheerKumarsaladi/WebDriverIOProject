@@ -18,6 +18,11 @@ jobs:
         - name: Fix permissions for wdio
           run: chmod +x node_modules/.bin/wdio
 
+        - name: Set up browser for testing
+          run: |
+                mkdir -p $GITHUB_WORKSPACE/test-data
+                google-chrome --user-data-dir=$GITHUB_WORKSPACE/test-data --headless --disable-gpu --remote-debugging-port=9222
+
         - name: 🧪 Test
           run: npm run wdio
 
