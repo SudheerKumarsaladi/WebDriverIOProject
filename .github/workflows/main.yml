@@ -24,7 +24,6 @@ jobs:
         - name: Fix allure permissions
           run: chmod +x ./node_modules/allure-commandline/dist/bin/allure
 
-
         - name: Generate Allure report
           run: npx allure generate allure-results --clean
 
@@ -33,4 +32,4 @@ jobs:
           
           with:
             name: allure Reports
-            path: ./allure-report
+            path: ./allure-report/
