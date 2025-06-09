@@ -1,5 +1,4 @@
 name: Run WebDriverIO tests and generate Allure report
-
 on:
   push:
     branches: [main]
