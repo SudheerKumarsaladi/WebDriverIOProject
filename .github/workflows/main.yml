@@ -1,50 +1,50 @@
 name: CI  
 on: [push, pull_request]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: ⬇️ Checkout Code
-          uses: actions/checkout@v4
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v4
 
-        - name: 🐢 Setup Node
-          uses: actions/setup-node@v4
-          with:
-            node-version: '22'
+      - name: 🐢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-        - name: 🏗️ Install Dependencies
-          run: npm install
+      - name: 📥 Install Dependencies
+        run: npm install
 
-        - name: 📥 Install Allure CLI
-          run: npm install -g allure-commandline --save-dev
-          
-        - name: Fix permissions
-          run: chmod +x ./node_modules/.bin/wdio
+      - name: 📥 Install Allure CLI
+        run: npm install -g allure-commandline
 
-        - name: 🧪 Test
-          run: npm run wdio
+      - name: 🔐 Fix permissions
+        run: chmod +x ./node_modules/.bin/wdio
 
-        - name: 🔍 Debug allure-results contents
-          run: |
-            echo "Contents of allure-results:"
-             ls -la allure-results
+      - name: 🧪 Run Tests
+        run: npm run wdio
 
-        - name: 🛠 Generate Allure Report
-          run: |
-            allure generate allure-results --clean -o allure-report
-            touch ./allure-report/.nojekyll
+      - name: 🔍 Debug allure-results contents
+        run: |
+          echo "Checking contents of allure-results:"
+          ls -la allure-results || echo "❌ No results found!"
 
-        - name: 📦 Upload Allure Report
-          uses: actions/upload-artifact@v4
-          with:
-            name: allure-report
-            path: ./allure-report
+      - name: 🛠 Generate Allure Report
+        run: |
+          allure generate allure-results --clean -o allure-report
+          touch ./allure-report/.nojekyll
 
-        - name: 📤 Deploy to GitHub Pages
-          if: github.ref == 'refs/heads/main'
-          uses: peaceiris/actions-gh-pages@v4
-          with:
-             github_token: ${{ secrets.GITHUB_TOKEN }}
-             publish_dir: ./allure-report
-             publish_branch: gh-pages
+      - name: 📦 Upload Allure Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: ./allure-report
 
+      - name: 📤 Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
